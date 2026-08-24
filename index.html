@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Wishlist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>My Wishlist</h1>
+    <p>Things I'd love, in no particular order 🎁</p>
+  </header>
+
+  <main>
+    <div id="grid" class="grid"></div>
+    <p id="empty" class="empty" hidden>No items yet — check back soon!</p>
+  </main>
+
+  <script>
+    async function loadItems() {
+      const grid = document.getElementById('grid');
+      const empty = document.getElementById('empty');
+      try {
+        const res = await fetch('items.json');
+        const items = await res.json();
+
+        if (!items.length) {
+          empty.hidden = false;
+          return;
+        }
+
+        for (const item of items) {
+          const card = document.createElement('div');
+          card.className = 'card';
+          card.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" loading="lazy" />
+            <div class="card-body">
+              <div class="info" ${item.note ? `title="${item.note}"` : ''}>
+                <h2>${item.name}</h2>
+                <span class="price">${item.price}</span>
+              </div>
+              <a class="buy-btn" href="${item.url}" target="_blank" rel="noopener">View</a>
+            </div>
+          `;
+          grid.appendChild(card);
+        }
+      } catch (err) {
+        empty.hidden = false;
+        empty.textContent = 'Could not load wishlist items.';
+      }
+    }
+
+    loadItems();
+  </script>
+</body>
+</html>

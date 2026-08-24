@@ -1,0 +1,141 @@
+:root {
+  --bg: #ffffff;
+  --card-bg: #ffffff;
+  --text: #111111;
+  --muted: #8a8a8a;
+  --border: #e5e5e5;
+  --btn-bg: #111111;
+  --btn-text: #ffffff;
+  --btn-hover: #333333;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Fira Sans Condensed", Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+header {
+  text-align: center;
+  padding: 3.5rem 1.5rem 2rem;
+}
+
+header h1 {
+  margin: 0 0 0.4rem;
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: var(--border);
+  display: block;
+}
+
+.card-body {
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.info {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.info h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.price {
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 0.95rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.buy-btn {
+  flex-shrink: 0;
+  display: inline-block;
+  text-align: center;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  text-decoration: none;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  transition: background 0.15s ease;
+}
+
+.buy-btn:hover {
+  background: var(--btn-hover);
+}
+
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 3rem 0;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  padding: 2rem 0;
+}
+
+footer code {
+  background: #f3f3f3;
+  padding: 0.1rem 0.4rem;
+}
